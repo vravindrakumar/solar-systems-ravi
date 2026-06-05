@@ -1,0 +1,27 @@
+name:Solar System Wokflow
+
+on:
+ workflow_dispatch:
+ push:
+   branches:
+    - main
+    - 'feature/*'
+
+jobs:
+   unit-testing:
+    name: Unit testing
+    runs-on:ubuntu-latest
+    steps:
+    - name:checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup NodeJs Version -10
+      uses: actions/setup-nodejs@v3
+      with:
+        node-version: 10
+      
+      - name:install Dependencies
+        run: npm install
+
+      - name: Unit testing
+        run:npm test 
